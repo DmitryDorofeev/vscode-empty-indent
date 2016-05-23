@@ -1,7 +1,7 @@
 {
     "name": "empty-indent",
     "description": "Removes indentation in empty lines",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "DmitryDorofeev",
     "author": {
         "name": "Dmitry Dorofeev"
@@ -33,7 +33,6 @@
                     "default": true,
                     "description": "Automatically remove indentation in empty lines on save"
                 },
-                
                 "smartIndent.highlightIndent": {
                     "type": "boolean",
                     "default": false,
