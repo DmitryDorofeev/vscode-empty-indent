@@ -6,14 +6,8 @@ import * as vscode from 'vscode';
 export function activate(context: vscode.ExtensionContext) {
 
   vscode.workspace.onDidSaveTextDocument(event => {
-    let activeEditor = vscode.window.activeTextEditor;
-    let text = activeEditor.document.getText();
-    
-    
-    activeEditor.edit(editBuilder => {
-      // editBuilder.replace('','')
-    });
-    text.replace(/^[\t\s]+$/g, '');
+    vscode.commands.executeCommand('editor.action.trimTrailingWhitespace');
   });
-}
+}   
+
 

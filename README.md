@@ -1,1 +1,1 @@
-# Smart Indent
+# Empty Indent

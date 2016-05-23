@@ -1,8 +1,8 @@
 {
-    "name": "smart-indent",
-    "description": "Makes indentation easier to read",
+    "name": "empty-indent",
+    "description": "Removes indentation in empty lines",
     "version": "0.0.1",
-    "publisher": "oderwat",
+    "publisher": "DmitryDorofeev",
     "author": {
         "name": "Dmitry Dorofeev"
     },
@@ -11,11 +11,11 @@
         "vscode": "0.10.x"
     },
     "repository": {
-        "url": "https://github.com/DmitryDorofeev/vscode-smart-indent.git",
+        "url": "https://github.com/DmitryDorofeev/vscode-empty-indent.git",
         "type": "git"
     },
     "bugs": {
-        "url": "https://github.com/oderwat/vscode-smart-indent/issues"
+        "url": "https://github.com/DmitryDorofeev/vscode-empty-indent/issues"
     },
     "categories": [
         "Other"
