@@ -1,7 +1,7 @@
 {
     "name": "empty-indent",
-    "description": "Removes indentation in empty lines",
-    "version": "0.0.2",
+    "description": "Removes indentation in empty lines on save",
+    "version": "0.1.0",
     "publisher": "DmitryDorofeev",
     "author": {
         "name": "Dmitry Dorofeev"
@@ -26,17 +26,22 @@
     "contributes": {
         "configuration": {
             "type": "object",
-            "title": "Smart-Indent configuration",
+            "title": "Empty Indent configuration",
             "properties": {
-                "smartIndent.removeIndent": {
+                "emptyIndent.removeIndent": {
                     "type": "boolean",
                     "default": true,
                     "description": "Automatically remove indentation in empty lines on save"
                 },
-                "smartIndent.highlightIndent": {
+                "emptyIndent.highlightIndent": {
                     "type": "boolean",
                     "default": false,
                     "description": "Highlight indent on empty lines"
+                },
+                "emptyIndent.highlightColor": {
+                    "type": "string",
+                    "default": "rgba(246,36,89,0.6)",
+                    "description": "Highlight indent color"
                 }
             }
         }
