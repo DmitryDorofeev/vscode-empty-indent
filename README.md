@@ -5,7 +5,7 @@ Remove indent of empty lines on save
 
 Settings:
 
-```json
+```js
 {
 	/* Automatically remove indentation in empty lines on save */
 	"emptyIndent.removeIndent": true,
