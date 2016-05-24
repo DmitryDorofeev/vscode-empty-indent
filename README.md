@@ -14,6 +14,6 @@ Settings:
 	"emptyIndent.highlightIndent": false,
 
 	/* Highlight indent color */
-	"emptyIndent.highlightColor": "rgba(246,36,89,0.6)",
+	"emptyIndent.highlightColor": "rgba(246,36,89,0.6)"
 }
 ```
