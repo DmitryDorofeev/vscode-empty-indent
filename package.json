@@ -1,7 +1,7 @@
 {
     "name": "empty-indent",
     "description": "Removes indentation in empty lines on save",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "publisher": "DmitryDorofeev",
     "author": {
         "name": "Dmitry Dorofeev"
