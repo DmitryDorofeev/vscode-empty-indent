@@ -6,6 +6,7 @@
     "author": {
         "name": "Dmitry Dorofeev"
     },
+    "icon": "assets/icon.png",
     "license": "MIT",
     "engines": {
         "vscode": "0.10.x"
