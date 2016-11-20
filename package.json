@@ -1,7 +1,7 @@
 {
     "name": "empty-indent",
     "description": "Removes indentation in empty lines on save",
-    "version": "0.1.2",
+    "version": "0.2.0",
     "publisher": "DmitryDorofeev",
     "author": {
         "name": "Dmitry Dorofeev"
@@ -43,6 +43,11 @@
                     "type": "string",
                     "default": "rgba(246,36,89,0.6)",
                     "description": "Highlight indent color"
+                },
+                "emptyIndent.exclude": {
+                    "type": "array",
+                    "default": [],
+                    "description": "Excluded file types"
                 }
             }
         }
@@ -54,6 +59,6 @@
     },
     "devDependencies": {
         "vscode": "0.10.x",
-        "typescript": "^1.6.2"
+        "typescript": "^2.0.10"
     }
 }

@@ -1,15 +1,31 @@
 import * as vscode from 'vscode';
 
-export function activate(context: vscode.ExtensionContext) {
+function checkExclude(fileName: string, extensions: Array<string>) {
+  return extensions.reduce<boolean>((prev, cur) => {
+    if (fileName.endsWith(cur)) {
+      return true;
+    }
 
-  let removeIndent: boolean = vscode.workspace.getConfiguration('emptyIndent')['removeIndent'];
-  let highlightIndent: boolean = vscode.workspace.getConfiguration('emptyIndent')['highlightIndent'];
-  let highlightColor: string = vscode.workspace.getConfiguration('emptyIndent')['highlightColor'];
+    return false;
+  }, false);
+}
+
+export function activate(context: vscode.ExtensionContext) {
+  const conf = vscode.workspace.getConfiguration('emptyIndent');
+
+  const removeIndent = conf.get<boolean>('removeIndent');
+  const highlightIndent = conf.get<boolean>('highlightIndent');
+  const highlightColor = conf.get<string>('highlightColor');
+  const exclude = conf.get<Array<string>>('exclude');
 
   let activeEditor = vscode.window.activeTextEditor;
 
   if (removeIndent) {
     vscode.workspace.onDidSaveTextDocument(event => {
+      if (checkExclude(event.fileName, exclude)) {
+        return;
+      }
+
       vscode.commands.executeCommand('editor.action.trimTrailingWhitespace');
       vscode.window.activeTextEditor.document.save();
     });
@@ -23,20 +39,24 @@ export function activate(context: vscode.ExtensionContext) {
 
      vscode.window.onDidChangeActiveTextEditor(editor => {
       activeEditor = editor;
-      if (editor) {
+      if (editor && !checkExclude(activeEditor.document.fileName, exclude)) {
         updateDecorations(editor, decoration);
       }
     }, null, context.subscriptions);
 
     vscode.workspace.onDidChangeTextDocument(event => {
-      if (activeEditor && event.document === activeEditor.document) {
+      if (
+        activeEditor &&
+        event.document === activeEditor.document &&
+        !checkExclude(activeEditor.document.fileName, exclude)
+      ) {
         updateDecorations(activeEditor, decoration);
       }
     }, null, context.subscriptions);
 
     vscode.window.onDidChangeTextEditorSelection(event => {
         const line = event.selections.length === 1 ? event.selections[0].active : null;
-        if (activeEditor) {
+        if (activeEditor && !checkExclude(activeEditor.document.fileName, exclude)) {
           updateDecorations(activeEditor, decoration, line);
         }
     }, null, context.subscriptions);
@@ -76,5 +96,6 @@ function updateDecorations(editor, decoration, line?) {
         decor.push(decorationPos);
       }
     }
+
     editor.setDecorations(decoration, decor);
 }
